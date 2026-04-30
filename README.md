@@ -1,4 +1,4 @@
-# Monte Carlo & Simulation — ENSAE Paris M1
+# Monte Carlo & Simulation
 
 A comprehensive Jupyter notebook covering Monte Carlo methods, simulation techniques, and Bayesian inference, completed as part of the M1 curriculum at ENSAE Paris.
 
@@ -138,7 +138,7 @@ Network model `p(x|theta) ∝ exp(theta^T S(x))` with `S(x) = (total edges, numb
 ## Key Takeaways
 
 - Rejection sampling requires the proposal to have **heavier tails** than the target
-- Gibbs samplers mix poorly when parameters are highly correlated — adapt the proposal
+- Gibbs samplers mix poorly when parameters are highly correlated: adapt the proposal
 - Variance reduction methods (CV, QMC) work best for **smooth** integrands
-- ABC is likelihood-free but summary statistics must be **informative** — poor statistics = unidentifiable parameters
+- ABC is likelihood-free but summary statistics must be **informative** i.e. poor statistics = unidentifiable parameters
 - The critical temperature in Ising ($\beta_c \approx 0.88$) marks a phase transition where MCMC mixing collapses
