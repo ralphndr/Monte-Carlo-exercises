@@ -66,11 +66,11 @@ Critique of a naive adaptive IS scheme (circular dependency). Fix via **two-batc
 ---
 
 ### 7 · Metropolis-Hastings on a Bivariate Gaussian
-Target: $\mathcal{N}_2(0, \Sigma_\rho)$ with correlation $\rho$.
+Target: bivariate Gaussian N(0, Sigma) with correlation rho.
 
-- **Gibbs sampler:** exact conditionals, poor mixing as $\rho \to 1$
-- **RWHM:** effect of step size $\tau$ — optimal acceptance rate ~23%
-- **Key insight:** isotropic proposal fails for $\rho \approx 1$; proposal $\propto \Sigma$ fixes mixing
+- **Gibbs sampler:** exact conditionals, poor mixing as rho approaches 1
+- **RWHM:** effect of step size tau — optimal acceptance rate ~23%
+- **Key insight:** isotropic proposal fails for rho close to 1; proposal proportional to target covariance Sigma fixes mixing
 
 ---
 
@@ -104,7 +104,7 @@ Gibbs sampler with latent variables $z_i$ for $K$-component mixture $\frac{1}{K}
 ### 11 · Discretization Error in Option Pricing
 Black-Scholes European put: $V = E[e^{-rT}(K-S(T))^+]$.
 
-- **Q11.1:** Brownian bridge $W_t | W_a, W_b \sim \mathcal{N}\!\left(\frac{(b-t)W_a+(t-a)W_b}{b-a}, \frac{(t-a)(b-t)}{b-a}\right)$
+- **Q11.1:** Brownian bridge $W_t | W_a, W_b \sim \mathcal{N}\\left(\frac{(b-t)W_a+(t-a)W_b}{b-a}, \frac{(t-a)(b-t)}{b-a}\right)$
 - **Q11.2:** Direct MC estimate using closed-form $S(T)$
 - **Q11.3:** Adaptive Euler-Maruyama refinement — recycle simulations via Brownian bridge, stop when consecutive confidence intervals overlap
 
@@ -118,12 +118,12 @@ At each iteration: sample from $\mathcal{N}(\mu, \Sigma)$, keep elite fraction $
 ---
 
 ### 13 · ABC for Exponential Random Graph Models
-Network model $p(x|\theta) \propto \exp\{\theta^T S(x)\}$ with $S(x) = (\text{edges},\ \#\text{nodes with deg}\geq 3)$.
+Network model `p(x|theta) ∝ exp(theta^T S(x))` with `S(x) = (total edges, number of nodes with degree >= 3)`.
 
-- **Q13.1:** Gibbs sampler for edge updates — $P(x_{ij}=1|\text{rest}) = \sigma(\theta^T \Delta S_{ij})$
-- **Q13.2:** ABC-SMC to estimate $\theta$ — progressively tightening $\varepsilon$ sequence
+- **Q13.1:** Gibbs sampler for edge updates — `P(x_ij=1 | rest) = sigmoid(theta^T * delta_S_ij)`
+- **Q13.2:** ABC-SMC to estimate theta — progressively tightening epsilon sequence
 
-**Key limitation:** ABC struggles to identify $\theta_2$ because $S_2$ is not sufficiently informative — illustrates why summary statistic choice is critical in ABC.
+**Key limitation:** ABC struggles to identify theta_2 because S2 is not sufficiently informative — illustrates why summary statistic choice is critical in ABC.
 
 ---
 
